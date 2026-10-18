@@ -4,44 +4,46 @@
 float area(float a, float b, float h) { return ((a + b) / 2.0f) * h; }
 void draw(int a, int b, int h) {
     for (int i = 0; i < h; i++) {
-        for (int j = 0; j < h - i; j++) printf(" "); 
-        for (int j = 0; j < b + i * 2; j++) printf(" "); 
-        printf("*\n");                             
+        for (int j = 0; j < h - i; j++) printf(" ");
+        printf("*");
+        for (int j = 0; j < b + i * 2; j++) printf(" ");
+        printf("*\n");
     }
-    for (int i = 0; i < a; i++) printf("*");        
+    for (int i = 0; i < a; i++) printf("*");
     printf("\n");
 }
 void compare(float a1, float b1, float h1, float a2, float b2, float h2) {
-    float s1 = area(a1, b1, h1), s2 = area(a2, b2, h2);
-    printf("Площадь 1: %.2f, Площадь 2: %.2f. ", s1, s2);
-    if (s1 > s2) printf("Первая больше.\n");
-    else if (s2 > s1) printf("Вторая больше.\n");
-    else printf("Они равны.\n");
+    float s1 = area(a1, b1, h1);
+    float s2 = area(a2, b2, h2);
+    printf("РџР»РѕС‰Р°РґСЊ 1: %.2f, РџР»РѕС‰Р°РґСЊ 2: %.2f. ", s1, s2);
+    if (s1 > s2) printf("РџРµСЂРІР°СЏ Р±РѕР»СЊС€Рµ.\n");
+    else if (s2 > s1) printf("Р’С‚РѕСЂР°СЏ Р±РѕР»СЊС€Рµ.\n");
+    else printf("РћРЅРё СЂР°РІРЅС‹.\n");
 }
 int main() {
     setlocale(LC_ALL, "Russian");
     int choice;
     float a, b, h;
     do {
-        printf("\n1-Площадь, 2-Определение, 3-Рисунок, 4-Сравнить, 0-Выход\n> ");
+        printf("\n1-РџР»РѕС‰Р°РґСЊ, 2-РћРїСЂРµРґРµР»РµРЅРёРµ, 3-Р РёСЃСѓРЅРѕРє, 4-РЎСЂР°РІРЅРёС‚СЊ, 0-Р’С‹С…РѕРґ\n> ");
         scanf("%d", &choice);
 
         if (choice == 1) {
-            printf("Введите a, b, h: "); scanf("%f %f %f", &a, &b, &h);
-            printf("Площадь: %.2f\n", area(a, b, h));
+            printf("Р’РІРµРґРёС‚Рµ a, b, h: "); scanf("%f %f %f", &a, &b, &h);
+            printf("РџР»РѕС‰Р°РґСЊ: %.2f\n", area(a, b, h));
         }
         else if (choice == 2) {
-            printf("Равнобедренная трапеция — четырехугольник с равными боковыми сторонами.\n");
+            printf("Р Р°РІРЅРѕР±РµРґСЂРµРЅРЅР°СЏ С‚СЂР°РїРµС†РёСЏ вЂ” С‡РµС‚С‹СЂРµС…СѓРіРѕР»СЊРЅРёРє СЃ СЂР°РІРЅС‹РјРё Р±РѕРєРѕРІС‹РјРё СЃС‚РѕСЂРѕРЅР°РјРё.\n");
         }
         else if (choice == 3) {
             int a_i, b_i, h_i;
-            printf("Введите целые a, b, h: "); scanf("%d %d %d", &a_i, &b_i, &h_i);
+            printf("Р’РІРµРґРёС‚Рµ С†РµР»С‹Рµ a, b, h: "); scanf("%d %d %d", &a_i, &b_i, &h_i);
             draw(a_i, b_i, h_i);
         }
         else if (choice == 4) {
             float a2, b2, h2;
-            printf("Трапеция 1 (a b h): "); scanf("%f %f %f", &a, &b, &h);
-            printf("Трапеция 2 (a b h): "); scanf("%f %f %f", &a2, &b2, &h2);
+            printf("РўСЂР°РїРµС†РёСЏ 1 (a b h): "); scanf("%f %f %f", &a, &b, &h);
+            printf("РўСЂР°РїРµС†РёСЏ 2 (a b h): "); scanf("%f %f %f", &a2, &b2, &h2);
             compare(a, b, h, a2, b2, h2);
         }
     } while (choice != 0);
